@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Adaptation Game</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styless.css">
+    <link rel="icon" href="~/img/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta property="og:url" content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Save the Water!" />
+    <meta property="og:description" content="Game" />
+    <meta property="og:image" content="icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+
+  
+</head>
+<body class="bg-light">
+
+    <div class="container main-menu">
+        <h1 class="game-title">Climate Adaptation Game</h1>
+        <div class="buttons">
+            <button class="menu-button" id="start-game">Start Game</button>
+            <button class="menu-button" id="continue-game" disabled>Continue</button>
+            <button class="menu-button" id="save-game" disabled>Save</button>
+        </div>
+        <div class="info-button">
+            <button id="info" class="menu-button">Information</button>
+        </div>
+    </div>
+
+    <!-- Information Modal -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Information</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="general">General Information</button>
+                <button class="tab-btn" data-tab="teachers">Information for Teachers</button>
+            </div>
+            <div class="tab-content" id="general">
+                <p>Welcome to our town - Weatherton. Your mission is to help us work with climate adaptation.</p>
+                <p>
+                    The aim of this game is to understand how society can adapt to climate change.
+                    The game requires no preparation and takes approximately 30-45 minutes to play.
+                    If you want to play as a group, we recommend a discussion about your experiences of adapting the city.
+                </p>
+                <p>
+                    Serious gaming is a tool for analyzing complex contexts.
+                    It helps visualize background and causations for a phenomenon.
+                    Hopefully, the game will create curiosity and interest in climate change adaptation.
+                </p>
+            </div>
+            <div class="tab-content hidden" id="teachers">
+                <p>The causes and effects of climate change can be studied further.</p>
+                <p>
+                    Adaptation and politics discussions can be used in social studies lessons.
+                    Topics may include economics, ethics, and technical solutions for building a sustainable society.
+                </p>
+                <p>More about climate change and adaptation at SMHI.se and the Swedish portal.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Options Modal -->
+    <div id="game-options-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-options">&times;</span>
+            <h2>Game Options</h2>
+            <div class="difficulty">
+                <h3>Difficulty</h3>
+                <div class="difficulty-options">
+                    <button class="difficulty-btn active" data-level="Easy">Easy (RCP 2.6)</button>
+                    <button class="difficulty-btn" data-level="Medium">Medium (RCP 4.5)</button>
+                    <button class="difficulty-btn" data-level="Hard">Hard (RCP 8.5)</button>
+                </div>
+            </div>
+            <div class="settings">
+                <h3>Settings</h3>
+                <label><input type="checkbox" id="skip-intro"> Skip the introduction</label>
+                <br>
+                <label><input type="checkbox" id="show-news" checked> Show news</label>
+            </div>
+            <button id="confirm-start" class="menu-button">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
