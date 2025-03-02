@@ -423,3 +423,39 @@ let timerInterval = setInterval(() => {
 
 // إعادة تشغيل اللعبة
 restartBtn.addEventListener("click", () => location.reload());
+
+const leftBtn = document.getElementById("left-btn");
+const rightBtn = document.getElementById("right-btn");
+
+// تحريك اللاعب باستخدام لوحة المفاتيح
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && playerPosition > 10) {
+        playerPosition -= 20;
+        player.src = "../img/game4/l.png";
+    } else if (event.key === "ArrowRight" && playerPosition < gameContainer.offsetWidth - 80) {
+        playerPosition += 20;
+        player.src = "../img/game4/r.png";
+    }
+    player.style.left = playerPosition + "px";
+});
+
+document.addEventListener("keyup", () => {
+    player.src = "../img/game4/r.png";
+});
+
+// تحريك اللاعب باستخدام اللمس على الهاتف
+leftBtn.addEventListener("touchstart", () => {
+    if (playerPosition > 10) {
+        playerPosition -= 20;
+        player.src = "../img/game4/l.png";
+    }
+    player.style.left = playerPosition + "px";
+});
+
+rightBtn.addEventListener("touchstart", () => {
+    if (playerPosition < gameContainer.offsetWidth - 80) {
+        playerPosition += 20;
+        player.src = "../img/game4/r.png";
+    }
+    player.style.left = playerPosition + "px";
+});
