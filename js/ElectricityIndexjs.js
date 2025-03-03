@@ -258,6 +258,11 @@
 
 //// إعادة تشغيل اللعبة
 //restartBtn.addEventListener("click", () => location.reload());
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const player = document.getElementById("player");
 const gameContainer = document.getElementById("game-container");
 const waterScoreDisplay = document.getElementById("water-score");
