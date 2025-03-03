@@ -143,14 +143,17 @@ body {
     gap: 20px;
 }
 
+
 #touch-controls button {
-    font-size: 24px;
-    padding: 15px;
+    font-size: 32px;  /* جعل الأيقونات أكبر */
+    padding: 10px;
     border: none;
-    color: white;
-    border-radius: 10px;
+    background: none; /* إزالة الخلفية */
+    color: white; /* جعل لون الأيقونات أبيض */
+    cursor: pointer;
     width: 60px;
     height: 60px;
+    outline: none; /* إزالة الإطار عند الضغط */
 }
 
 /* Responsive Design */
