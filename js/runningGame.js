@@ -362,3 +362,50 @@ document.body.addEventListener("keyup", function(e) {
 });
 /*////////////////////////// */
 
+// تعريف أزرار اللمس
+const upBtn = document.getElementById("up-btn");
+const downBtn = document.getElementById("down-btn");
+const leftBtn = document.getElementById("left-btn");
+const rightBtn = document.getElementById("right-btn");
+
+// دالة لضبط القفز بسلاسة
+function jump() {
+    if (!player.jumping && player.grounded) {
+        player.jumping = true;
+        player.grounded = false;
+        player.velY = -player.speed * 2; // قوة القفز
+    }
+}
+
+// دالة لضبط الانحناء
+function crouch(start) {
+    if (start) {
+        player.height = 200; // تقليل الحجم عند الانحناء
+        player.width = 120;
+        player.y = height - 35;
+    } else {
+        player.height = PLAYER_HEIGHT;
+        player.width = PLAYER_WIDTH;
+        player.y = height - 40;
+    }
+}
+
+// دالة لضبط الحركة
+function move(direction, start) {
+    if (start) {
+        keys[direction] = true;
+    } else {
+        keys[direction] = false;
+    }
+}
+
+// إضافة أحداث لمس للتحكم
+upBtn.addEventListener("touchstart", jump);
+downBtn.addEventListener("touchstart", () => crouch(true));
+downBtn.addEventListener("touchend", () => crouch(false));
+
+leftBtn.addEventListener("touchstart", () => move("ArrowLeft", true));
+leftBtn.addEventListener("touchend", () => move("ArrowLeft", false));
+
+rightBtn.addEventListener("touchstart", () => move("ArrowRight", true));
+rightBtn.addEventListener("touchend", () => move("ArrowRight", false));

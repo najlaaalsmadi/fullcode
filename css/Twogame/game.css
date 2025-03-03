@@ -5,6 +5,8 @@
     background-image: linear-gradient(to bottom, #93a5cf, #e4efe9), url("../../img/background.jpg");
 }
 
+
+
 canvas {
     display: none;
     background-size: 100%;
@@ -95,6 +97,7 @@ table {
     margin-left: 10%;
 }
 
+
 .text {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
@@ -112,6 +115,56 @@ table {
 }
 
 
+
+
+
+
+
+
+/* أزرار التحكم باللمس */
+#touch-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* تصميم الأزرار */
+.touch-row {
+    display: flex;
+    gap: 15px;
+}
+
+/* تصميم زر التحكم */
+#touch-controls button {
+    font-size: 24px;
+    padding: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3); /* شفافية لتحسين التصميم */
+    color: white;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in-out;
+}
+
+#touch-controls button:active {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* تحسين التصميم على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    #touch-controls button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
 
 
 
