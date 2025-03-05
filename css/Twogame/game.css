@@ -2,8 +2,8 @@
     margin: 0;
     text-align: center;
     font-family: 'Montserrat';
-    background-image: linear-gradient(to bottom, #93a5cf, #e4efe9), url("../../img/background.jpg");
-}
+    background-image: linear-gradient(to bottom, #93a5cf, #e4efe9);
+  }
 
 
 

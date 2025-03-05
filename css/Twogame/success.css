@@ -82,7 +82,7 @@ body {
     padding-left: 7%;
     padding-right: 7%;
     font-size: 24px;
-    background-color: #FE8470;
+    background-color: skyblue;
     border: none;
     font-family: 'Poppins', sans-serif;
     color: #FFECE9;
@@ -93,8 +93,8 @@ body {
   }
   
   #CTA:hover {
-    background-color: #E75E47;
-  }
+    background-color: navy;
+}
   
   #CTA2 {
     padding: 8%;

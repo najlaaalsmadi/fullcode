@@ -398,14 +398,59 @@ function move(direction, start) {
         keys[direction] = false;
     }
 }
+function sit(start) {
+  if (start) {
+      player.height = 180; // تقليل الطول ليبدو كأنه جالس
+      player.width = 150;  // تقليل العرض إذا لزم الأمر
+      player.y = height - 30; // تعديل موضعه ليكون أقرب للأرض
+  } else {
+      player.height = PLAYER_HEIGHT;
+      player.width = PLAYER_WIDTH;
+      player.y = height - 40;
+  }
+}
+const sitBtn = document.getElementById("sit-btn");
 
-// إضافة أحداث لمس للتحكم
-upBtn.addEventListener("touchstart", jump);
-downBtn.addEventListener("touchstart", () => crouch(true));
-downBtn.addEventListener("touchend", () => crouch(false));
+sitBtn.addEventListener("pointerdown", (e) => {
+  e.preventDefault(); // منع أي سلوك افتراضي للمتصفح
+  sit(true);
+});
+sitBtn.addEventListener("pointerup", (e) => {
+  e.preventDefault();
+  sit(false);
+});
 
-leftBtn.addEventListener("touchstart", () => move("ArrowLeft", true));
-leftBtn.addEventListener("touchend", () => move("ArrowLeft", false));
+function preventDefaultTouch(e) {
+  e.preventDefault();
+}
 
-rightBtn.addEventListener("touchstart", () => move("ArrowRight", true));
-rightBtn.addEventListener("touchend", () => move("ArrowRight", false));
+upBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); jump(); });
+downBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); crouch(true); });
+downBtn.addEventListener("pointerup", (e) => { e.preventDefault(); crouch(false); });
+leftBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); move("ArrowLeft", true); });
+leftBtn.addEventListener("pointerup", (e) => { e.preventDefault(); move("ArrowLeft", false); });
+rightBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); move("ArrowRight", true); });
+rightBtn.addEventListener("pointerup", (e) => { e.preventDefault(); move("ArrowRight", false); });
+// إصلاح زر الجلوس ليعمل على الهاتف والكمبيوتر
+sitBtn.addEventListener("pointerdown", (e) => {
+  e.preventDefault(); // منع أي سلوك افتراضي للمتصفح
+  sit(true);
+});
+
+sitBtn.addEventListener("pointerup", (e) => {
+  e.preventDefault();
+  sit(false);
+});
+
+// إصلاح جميع الأزرار بحيث لا تسبب تمرير الصفحة عند اللمس
+function preventDefaultTouch(e) {
+  e.preventDefault();
+}
+
+upBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); jump(); });
+downBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); crouch(true); });
+downBtn.addEventListener("pointerup", (e) => { e.preventDefault(); crouch(false); });
+leftBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); keys[37] = true; });
+leftBtn.addEventListener("pointerup", (e) => { e.preventDefault(); keys[37] = false; });
+rightBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); keys[39] = true; });
+rightBtn.addEventListener("pointerup", (e) => { e.preventDefault(); keys[39] = false; });
