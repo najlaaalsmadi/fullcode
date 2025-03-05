@@ -364,7 +364,7 @@ document.body.addEventListener("keyup", function(e) {
 
 // تعريف أزرار اللمس
 const upBtn = document.getElementById("up-btn");
-const downBtn = document.getElementById("down-btn");
+// const downBtn = document.getElementById("down-btn");
 const leftBtn = document.getElementById("left-btn");
 const rightBtn = document.getElementById("right-btn");
 
@@ -377,19 +377,19 @@ function jump() {
     }
 }
 
-// دالة لضبط الانحناء
 function crouch(start) {
-    if (start) {
-        player.height = 200; // تقليل الحجم عند الانحناء
-        player.width = 120;
-        player.y = height - 35;
-    } else {
-        player.height = PLAYER_HEIGHT;
-        player.width = PLAYER_WIDTH;
-        player.y = height - 40;
-    }
+  if (start) {
+      player.height = 200; // تقليل الحجم عند الانحناء
+      player.width = 120;
+      player.y = height - 35;
+      keys[40] = true; // تحديد المفتاح 40 (السهم للأسفل) كأنه مضغوط
+  } else {
+      player.height = PLAYER_HEIGHT;
+      player.width = PLAYER_WIDTH;
+      player.y = height - 40;
+      keys[40] = false; // تحرير المفتاح عند الإفلات
+  }
 }
-
 // دالة لضبط الحركة
 function move(direction, start) {
     if (start) {
@@ -425,32 +425,27 @@ function preventDefaultTouch(e) {
 }
 
 upBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); jump(); });
-downBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); crouch(true); });
-downBtn.addEventListener("pointerup", (e) => { e.preventDefault(); crouch(false); });
+sitBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); crouch(true); });
+sitBtn.addEventListener("pointerup", (e) => { e.preventDefault(); crouch(false); });
 leftBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); move("ArrowLeft", true); });
 leftBtn.addEventListener("pointerup", (e) => { e.preventDefault(); move("ArrowLeft", false); });
 rightBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); move("ArrowRight", true); });
 rightBtn.addEventListener("pointerup", (e) => { e.preventDefault(); move("ArrowRight", false); });
-// إصلاح زر الجلوس ليعمل على الهاتف والكمبيوتر
+
 sitBtn.addEventListener("pointerdown", (e) => {
-  e.preventDefault(); // منع أي سلوك افتراضي للمتصفح
-  sit(true);
+  e.preventDefault();
+  player.height = 200; // تصغير الحجم عند الانحناء
+  player.width = 120;
+  player.y = height - 35;
+  keys[40] = true; // تفعيل زر الانحناء
 });
 
 sitBtn.addEventListener("pointerup", (e) => {
   e.preventDefault();
-  sit(false);
+  player.height = PLAYER_HEIGHT; // إرجاع الحجم الأصلي
+  player.width = PLAYER_WIDTH;
+  player.y = height - 40;
+  keys[40] = false; // تعطيل زر الانحناء
 });
 
-// إصلاح جميع الأزرار بحيث لا تسبب تمرير الصفحة عند اللمس
-function preventDefaultTouch(e) {
-  e.preventDefault();
-}
 
-upBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); jump(); });
-downBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); crouch(true); });
-downBtn.addEventListener("pointerup", (e) => { e.preventDefault(); crouch(false); });
-leftBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); keys[37] = true; });
-leftBtn.addEventListener("pointerup", (e) => { e.preventDefault(); keys[37] = false; });
-rightBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); keys[39] = true; });
-rightBtn.addEventListener("pointerup", (e) => { e.preventDefault(); keys[39] = false; });
